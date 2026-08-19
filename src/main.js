@@ -1,11 +1,37 @@
 import './style.css'
+import products from './products';
+
+let productCards = ''
+
+  products.forEach((product) =>{
+    productCards += `
+     <div class="min-w-62.5 shrink-0">
+
+      <img src="${product.image}" alt="${product.name}" class="w-full h-64 object-cover rounded-lg">
+
+      <div class="">
+
+      <h3 class="mt">
+      ${product.name}
+      </h3>
+     <h3 class="">
+      ${product.description}
+      </h3>
+     <h3 class="">
+      $${product.price}
+      </h3>
+      </div>
+
+      </div>
+    `
+  })
 
 
 
 document.querySelector('#app').innerHTML = `
 <body>
        
-  <nav id="navbar" class="bg-white p-4 sticky shadow-md transition-all">
+  <nav id="navbar" class="bg-white p-4 sticky  shadow-md transition-all">
 
        <div class= "w-full flex  justify-between h-auto">
 
@@ -53,6 +79,19 @@ document.querySelector('#app').innerHTML = `
           </div> 
         </div>
 
+       </section>
+
+       <section id="shop" class="bg-gray-200 h-96"> 
+         <div class="py-18">
+            <h1 class="text-center font-bold text-3xl mb-6">
+            Our Products
+            </h1>
+
+            <div id ="product-list" class="">
+              ${productCards}
+            </div>
+
+         </div>
        </section>
        </body>
 `
