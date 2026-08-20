@@ -1,26 +1,22 @@
 import './style.css'
 import products from './products';
 
+
+
 let productCards = ''
 
   products.forEach((product) =>{
     productCards += `
-     <div class="min-w-62.5 shrink-0">
+     <div class="product-card max-w-74  shrink-0 bg-white shadow-lg rounded-xl ">
 
-      <img src="${product.image}" alt="${product.name}" class="w-full h-64 object-cover rounded-lg">
+        <img src="${product.image}" alt="${product.name}" class=" w-full h-64 object-cover rounded-xl ">
 
-      <div class="">
-
-      <h3 class="mt">
-      ${product.name}
-      </h3>
-     <h3 class="">
-      ${product.description}
-      </h3>
-     <h3 class="">
-      $${product.price}
-      </h3>
-      </div>
+       <div class="text-center px-2 ">
+        <h3 class="mt-4 text-lg font-bold text-pink-900">${product.name}</h3>
+        <h3 class="mt-2 text-gray-800">${product.description}</h3>
+        <h3 class="text-pink-900 font-bold text-xl">$${product.price}</h3>
+        <button class="px-4 py-2 my-2 bg-pink-900 text-white hover:bg-pink-800 rounded-sm shadow-md active:bg-pink-950 cursor-pointer">Add To Cart</button>
+       </div>
 
       </div>
     `
@@ -28,10 +24,12 @@ let productCards = ''
 
 
 
+
+
 document.querySelector('#app').innerHTML = `
-<body>
+
        
-  <nav id="navbar" class="bg-white p-4 sticky  shadow-md transition-all">
+  <nav id="navbar" class="bg-white p-4 sticky top-0 z-50 shadow-md transition-all">
 
        <div class= "w-full flex  justify-between h-auto">
 
@@ -81,20 +79,67 @@ document.querySelector('#app').innerHTML = `
 
        </section>
 
-       <section id="shop" class="bg-gray-200 h-96"> 
-         <div class="py-18">
-            <h1 class="text-center font-bold text-3xl mb-6">
+       
+       <section id="shop" class="bg-gray-200 h-auto mt-24 py-4 rounded-sm relative"> 
+         
+            <h1 class="text-center font-bold text-3xl mb-8">
             Our Products
             </h1>
+          
+             <div class="relative">
+             <div class="flex justify-between gap-3 ">
 
-            <div id ="product-list" class="">
+             <button id="prevBtn" class="text-white bg-pink-900 w-10 h-10 rounded-full text-2xl hover:bg-pink-700 hover:text-white cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed font-bold absolute top-1/2 left-0 z-10 -translate-y-1/2 shadow-lg"> < </button>
+             <button id="nextBtn" class="text-white bg-pink-900 w-10 h-10 rounded-full text-2xl hover:bg-pink-700 hover:text-white cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed font-bold absolute top-1/2 right-0 z-10 -translate-y-1/2 shadow-lg"> > </button>
+
+             </div>
+
+            <div id="productContainer" class="flex gap-6 overflow-x-auto scroll-smooth px-1 pb-4 hide-scrollbar w-full relative">
               ${productCards}
             </div>
 
-         </div>
+            </div>
        </section>
-       </body>
+
 `
+
+       
+const productContainer= document.getElementById("productContainer")
+const prevBtn = document.getElementById("prevBtn")
+const nextBtn = document.getElementById("nextBtn")
+
+
+setTimeout( () =>{
+  const scrollAmount = () => productContainer.clientWidth
+
+  function updateButtons(){
+  prevBtn.disabled = productContainer.scrollLeft <= 0
+    nextBtn.disabled =
+     productContainer.scrollLeft + productContainer.clientWidth >= productContainer.scrollWidth - 5
+  }
+
+
+  nextBtn.addEventListener("click", () =>{
+  productContainer.scrollBy({
+    left:scrollAmount(),
+    behavior:"smooth",
+  })
+})
+
+prevBtn.addEventListener("click", ()=>{
+  productContainer.scrollBy({
+    left: -scrollAmount(),
+    behavior:"smooth",
+  })
+})
+
+productContainer.addEventListener("scroll" , updateButtons)
+ updateButtons();
+  
+},100)
+
+
+
 
 
 

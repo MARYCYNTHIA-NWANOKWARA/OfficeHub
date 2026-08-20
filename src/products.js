@@ -2,9 +2,9 @@
     {
       id:1,
       name:"Noise-cancellation Headphones",
-      description:"Block out the world and enjoy pure sound with these premium active noise-cancelling (ANC) wireless headphones.",
+      description:"Enjoy pure sound with these premium active noise-cancelling (ANC) wireless headphones.",
       price:2.99,
-      image:"https://plus.unsplash.com/premium_photo-1678099940967-73fe30680949?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      image:"https://images.unsplash.com/photo-1520170350707-b2da59970118?q=80&w=765&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
 
     {
@@ -20,7 +20,7 @@
       id:3,
       name:"Phone Holder",
       description:"This universal 360-degree rotating phone holder offers a secure, hands-free view for your desk, car, or bedside.",
-      price:1.20,
+      price:1.29,
       image:"https://images.unsplash.com/photo-1604837394598-5b700b11f5e4?q=80&w=627&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 
     },
@@ -73,7 +73,7 @@
     {
       id:9,
       name:"Mechanical Keyboard",
-      description:"Built to last with durable keycaps and anti-ghosting technology, it delivers the ultimate satisfying click and precise response you need.",
+      description:"Built to last with durable keycaps and anti-ghosting technology, it delivers the precise response you need.",
       price:3.22,
       image:"https://images.unsplash.com/photo-1589578228447-e1a4e481c6c8?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 
