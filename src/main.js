@@ -34,7 +34,7 @@ document.querySelector('#app').innerHTML = `
        <div class= "w-full flex  justify-between h-auto">
 
        <div class="flex items-center gap-3 lg:hidden text-xl">
-         <i class="fa-solid fa-bars"></i>
+         <i  class="fa-solid fa-bars"></i>
        </div>
 
          <div class="flex items-center gap-2 text-pink-900 font-bold text-xl">
@@ -128,9 +128,9 @@ document.querySelector('#app').innerHTML = `
        </section>
 
 
-       <section id="subscribe" class="bg-pink-900 h-auto mt-24 py-4 px-6 rounded-sm">
+       <section id="subscribe" class="bg-pink-900 h-auto mt-24 py-2 px-6 ">
 
-       <div class="text-center max-w-2xl mx-auto h-96 flex flex-col justify-center items-center">
+       <div class="text-center max-w-2xl mx-auto h-90 flex flex-col justify-center items-center">
          <h1 class="text-gray-100 text-2xl md:text-3xl lg:text-3xl font-bold">
            Subscribe To Our Newsletter
          </h1>
@@ -146,6 +146,79 @@ document.querySelector('#app').innerHTML = `
        </div>
 
        </section>
+
+
+       <footer id="about" class="bg-gray-800 h-auto py-14 px-6">
+         <div class="max-w-7xl mx-auto px-4">
+
+         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 max-w-5xl">
+
+        <div class="space-y-5">
+ 
+           <div class="flex gap-2 text-gray-200 text-xl font-bold items-center">
+              <i class="fa-solid fa-briefcase"></i>
+              <h1 class=" pr-2">OfficeHub</h1>
+           </div>
+            <p class="text-gray-300 text-sm ">
+             Discover smart essentials to make your workday more productive and your workplace more efficient
+           </p>
+           <ul class="flex text-white text-lg rounded-full bg-gray-800">
+              <li class=""><i class="fa-brands fa-facebook"></i></li>
+              <li class=""><i class="fa-brands fa-facebook-f"></i></li>
+              <li class=""><i class="fa-brands fa-facebook"></i></li>
+              <li class=""><i class="fab fa-x-twitter"></i></li>
+            </ul>
+
+        </div>
+
+        <div class="space-y-5">
+
+            <h1 class="text-gray-200 font-bold text-md">Quick Links</h1>
+            <p class="w-10 h-0.5 -mt-3 bg-pink-900"></p>
+            <div class="grid text-gray-300 gap-2 text-sm display-block w-fit">
+              <a href="home" class="hover:text-gray-100">Home</a>
+              <a href="shop" class="hover:text-gray-100">Shop</a>
+              <a href="reviews" class="hover:text-gray-100">Reviews</a>
+              <a href="about" class="hover:text-gray-100">About Us</a>
+              <a href="subscribe" class="hover:text-gray-100">Subscribe</a>
+            </div>
+
+        </div>
+
+        <div class"">
+
+            <h1 class="text-gray-200 font-bold text-md">Customer Service</h1>
+            <p class="w-10 h-0.5 mt-2 bg-pink-900"></p>
+            <div class="grid gap-2 text-gray-300 mt-4 text-sm display-block w-fit">
+              <a href="#" class="hover:text-gray-100">FAQs</a>
+              <a href="#" class="hover:text-gray-100">Shipping Policy</a>
+              <a href="#" class="hover:text-gray-100">Return Policy</a>
+              <a href="#" class="hover:text-gray-100">Privacy Policy</a>
+              <a href="#" class="hover:text-gray-100">Terms & Conditions</a>
+            </div>
+
+        </div>
+
+        <div class="">
+             
+            <h1 class="text-gray-200 font-bold text-md">Contact Us</h2>
+            <ul class="mt-6 grid gap-4 text-gray-300 text-sm  ">
+              <li class=""><i class="fa-solid fa-location-dot mr-2"></i>123 Office Street, Abuja, FCT 900001</li>
+              <li class=""><i class="fa-solid fa-phone mr-2"></i>+234 (800) 123-4567</li>
+              <li class=""><i class="fa-solid fa-envelope mr-2"></i> info@officehub.com</li>
+              <li class=""><i class="fa-solid fa-clock mr-2"></i>   Mon - Fri: 9AM - 6Pm</li>
+            </ul>
+
+        </div>
+
+        </div>
+
+         </div>
+
+         <p class="text-center mt-14 text-gray-300 text-[10px] ">
+         @ 2026 OfficeHub. All rights reserved
+         </p>
+       </footer>
 
 `
 
@@ -242,7 +315,7 @@ const emailSubmitBtn = document.getElementById("emailSubmitBtn")
 emailSubmitBtn.onclick = () =>{
   const email = emailInput.value.trim();
 
-  if(emailInput.value === ""){
+  if(emailInput.value === ""){n
     window.alert("Please Enter An Email Address")
   }
   else if(!emailInput.value.includes("@")){
