@@ -127,6 +127,26 @@ document.querySelector('#app').innerHTML = `
             </div>
        </section>
 
+
+       <section id="subscribe" class="bg-pink-900 h-auto mt-24 py-4 px-6 rounded-sm">
+
+       <div class="text-center max-w-2xl mx-auto h-96 flex flex-col justify-center items-center">
+         <h1 class="text-gray-100 text-2xl md:text-3xl lg:text-3xl font-bold">
+           Subscribe To Our Newsletter
+         </h1>
+         <p class="text-gray-300 mt-6 text-sm md:text-base font-semibold">
+           Get the latest update on new products, exclusive offers, and shopping tips delivered straight to your inbox.
+         </p>
+         
+         <div class="grid gap-3 md:gap-0  md:flex  mt-6">
+          <input id="emailInput" class =" px-14 md:px-20 py-2 text-left bg-white rounded-sm border-none text-md" placeholder="Enter Your Email address" type="email">
+          <button id="emailSubmitBtn" class="w-full px-2 md:px-3 py-2 bg-black text-white font-bold cursor-pointer hover:bg-gray-900"> Subscribe</button >
+         </div>
+
+       </div>
+
+       </section>
+
 `
 
        
@@ -214,6 +234,25 @@ document.addEventListener("DOMContentLoaded", () =>{
 
 renderReviews();
 })
+
+/*SUBSCRIBE FUNCTIONALITY*/
+const emailInput = document.getElementById("emailInput");
+const emailSubmitBtn = document.getElementById("emailSubmitBtn")
+
+emailSubmitBtn.onclick = () =>{
+  const email = emailInput.value.trim();
+
+  if(emailInput.value === ""){
+    window.alert("Please Enter An Email Address")
+  }
+  else if(!emailInput.value.includes("@")){
+    window.alert("Please Enter a Valid Email Address")
+  }
+  else{
+    window.alert("SUBSCRIBED ✅")
+    emailInput.value = "";
+  }
+}
 
 
 
