@@ -1,6 +1,6 @@
 import './style.css'
 import products from './products';
-
+import reviews from './reviews';
 
 
 let productCards = ''
@@ -82,7 +82,7 @@ document.querySelector('#app').innerHTML = `
        
        <section id="shop" class="bg-gray-200 h-auto mt-24 py-4 rounded-sm relative"> 
          
-            <h1 class="text-center font-bold text-3xl mb-8">
+            <h1 class="text-center font-bold text-2xl md:text-3xl mb-8">
             Our Products
             </h1>
           
@@ -96,6 +96,32 @@ document.querySelector('#app').innerHTML = `
 
             <div id="productContainer" class="flex gap-6 overflow-x-auto scroll-smooth px-1 pb-4 hide-scrollbar w-full relative">
               ${productCards}
+            </div>
+
+            </div>
+       </section>
+
+
+       <section id="reviews" class="bg-gray-200 h-auto mt-24 py-4 rounded-sm">
+            <div class="max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+
+              <h1 class=" font-bold  text-2xl md:text-3xl mb-4 mt-2">
+              What Our Customers Say
+              </h1>
+
+              <p class="w-30 h-1 bg-pink-900 mx-auto mb-12"></p>
+
+              <div class="relative">
+              <div class=" overflow-hidden">
+
+                <div id="reviewTrack" class="flex transition-transform duration-500 ease-in-out"
+                </div>
+
+              </div>
+
+                <div id="reviewDots" class="flex justify-center gap-2 mt-8">
+                </div>
+
             </div>
 
             </div>
@@ -137,6 +163,57 @@ productContainer.addEventListener("scroll" , updateButtons)
  updateButtons();
   
 },100)
+
+
+
+/*REVIEWS PAGE FUNCTIONALITY*/
+document.addEventListener("DOMContentLoaded", () =>{
+
+  const reviewTrack = document.getElementById("reviewTrack");
+  const reviewDots = document.getElementById("reviewDots");
+
+  let currentReview = 0;
+
+  function renderReviews(){
+    reviewTrack.innerHTML = 
+      reviews.map(r => `
+        <div class="w-full flex shrink-0 px-4">
+
+        <div class="bg-white rounded-xl shadow-lg p-8 md:p-10 max-w-xl  mx-auto">
+          <img src="${r.image}" class="w-20 h-20 rounded-full mx-auto mb-4 border-4 border-pink-900" alt="${r.name}">
+          <p class="text-gray-700 italic mb-6">"${r.text}"</p>
+          <h4 class="font-bold text-pink-900">${r.name}</h4>
+          <p class="text-gray-600 text-sm">${r.role} </>
+        </div>
+
+        </div>
+        `).join('');
+
+      reviewDots.innerHTML = reviews.map((_,i) => `
+          <button class="w-3 h-3 rounded-full transition ${i === 0 ? 'bg-pink-900' : 'bg-gray-300'}"></button>
+      `).join('');
+
+        [...reviewDots.children].forEach((dot, i) =>{
+            dot.addEventListener("click", () => goToReview(i))
+        })
+  }
+
+  function goToReview(index){
+    currentReview = index;
+    reviewTrack.style.transform = `translateX(-${index * 100}%)`;
+
+    [...reviewDots.children].forEach((dot,i) =>{
+      dot.className=`w-3 h-3 rounded-full transition ${i === index ? 'bg-pink-900' : 'bg-gray-300'}`
+    })
+  }
+
+  setInterval(() =>{
+    currentReview = (currentReview + 1) % reviews.length;
+    goToReview(currentReview);
+  },5000)
+
+renderReviews();
+})
 
 
 
