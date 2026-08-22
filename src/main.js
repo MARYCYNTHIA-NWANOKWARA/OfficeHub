@@ -29,20 +29,16 @@ let productCards = ''
 document.querySelector('#app').innerHTML = `
 
        
-  <nav id="navbar" class="bg-white p-4 sticky top-0 z-50 shadow-md transition-all">
+  <nav id="navbar" class="bg-white p-4 relative top-0 z-50 shadow-md transition-all ">
 
-       <div class= "w-full flex  justify-between h-auto">
-
-       <div class="flex items-center gap-3 lg:hidden text-xl">
-         <i  class="fa-solid fa-bars"></i>
-       </div>
+       <div class= "w-full flex  justify-between ">
 
          <div class="flex items-center gap-2 text-pink-900 font-bold text-xl">
            <i class="fa-solid fa-briefcase"></i>
            <a href="#home" class="">OfficeHub</a>
          </div>
 
-         <div class="hidden lg:flex gap-4 font-bold text-gray-600 transition-all items-center">
+         <div id="navMenu" class="hidden lg:flex gap-4 font-bold text-gray-600 transition-all items-center">
             <a class="hover:text-pink-900" href="#home">Home</a>
             <a class="hover:text-pink-900" href="#shop">Shop</a>
             <a class="hover:text-pink-900" href="#reviews">Reviews</a>
@@ -51,12 +47,46 @@ document.querySelector('#app').innerHTML = `
          </div>
 
          <div class="flex gap-4  items-center">
-         <i class="fa-solid fa-magnifying-glass cursor-pointer"></i>
-         <i class="fa-solid fa-shopping-cart cursor-pointer"></i>
+         <i class="fa-solid fa-magnifying-glass cursor-pointer hover:text-pink-900"></i>
+         <i class="fa-solid fa-shopping-cart cursor-pointer hover:text-pink-900"></i>
+         <button class="flex items-center gap-3 lg:hidden text-xl hover:text-pink-900 cursor-pointer">
+          <i  id="toggleNavbarBtn" class="fa-solid fa-bars"></i>
+         </button>
          </div>
 
+         <div id="navbarMenu" class="fixed top-0 right-0 h-screen w-64 bg-gray-200 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out z-50 lg:hidden">
+          <button id="closeNavbarBtn" class="absolute top-4 right-4 text-2xl hidden cursor-pointer text-pink-900">
+          <i class="fa-solid fa-times"></i>
+         </button>
+
+         <ul id="mobileNavMenu" class="hidden flex-col gap-6 mt-16 px-6 font-bold ">
+          <li><a href="#" class="text-lg hover:text-pink-900"><i class="fa-solid fa-home mr-2"></i>Home</a></li>
+          <li><a href="#" class="text-lg hover:text-pink-900"><i class="fa-solid fa-store mr-2"></i>Shop</a></li>
+          <li><a href="#" class="text-lg hover:text-pink-900"><i class="fa-solid fa-star mr-2"></i>Reviews</a></li>
+          <li><a href="#" class="text-lg hover:text-pink-900"><i class="fa-solid fa-envelope mr-2"></i>About Us</a></li>
+          <li><a href="#" class="text-lg hover:text-pink-900"><i class="fa-solid fa-circle-info mr-2"></i>Subscribe</a></li>
+         </ul>
          </div>
+
+         <button id="closeNavbarBtn" class="absolute top-4 right-4 text-2xl hidden">
+          <i class="fa-solid fa-times"></i>
+         </button>
+
+         <ul id="mobileNavMenu" class="hidden flex-col gap-6 mt-16 px-6 ">
+          <<li><a href="#" class="text-lg hover:text-pink-900">Home</a></li>
+          <<li><a href="#" class="text-lg hover:text-pink-900">Shop</a></li>
+          <<li><a href="#" class="text-lg hover:text-pink-900">Reviews</a></li>
+          <<li><a href="#" class="text-lg hover:text-pink-900">About Us</a></li>
+          <<li><a href="#" class="text-lg hover:text-pink-900">Subscribe</a></li>
+         </ul>
+         </div>
+
+         <div id="overlay" class="inset-0 fixed bg-black/35 bg-opacity-50 hidden z-40 lg:hidden">
+         </div>
+
        </nav>
+
+
 
        <section id="home" class="relative h-96 bg-[url('/hero-bg.jpg')] w-full bg-cover bg-center bg-no-repeat items-center">
 
@@ -162,11 +192,11 @@ document.querySelector('#app').innerHTML = `
             <p class="text-gray-300 text-sm ">
              Discover smart essentials to make your workday more productive and your workplace more efficient
            </p>
-           <ul class="flex text-white text-lg rounded-full bg-gray-800">
-              <li class=""><i class="fa-brands fa-facebook"></i></li>
-              <li class=""><i class="fa-brands fa-facebook-f"></i></li>
-              <li class=""><i class="fa-brands fa-facebook"></i></li>
-              <li class=""><i class="fab fa-x-twitter"></i></li>
+           <ul class="flex gap-4 text-white text-md  ">
+              <li class=""><i class="fa-brands fa-facebook-f bg-gray-600 hover:bg-pink-900 p-3 rounded-full cursor-pointer"></i></li>
+              <li class=""><i class="fa-brands fa-tiktok bg-gray-600 hover:bg-pink-900 p-3 rounded-full cursor-pointer"></i></li>
+              <li class=""><i class="fa-brands fa-instagram bg-gray-600 hover:bg-pink-900 p-3 rounded-full cursor-pointer"></i></li>
+              <li class=""><i class="fab fa-x-twitter bg-gray-600  hover:bg-pink-900 p-3 rounded-full cursor-pointer"></i></li>
             </ul>
 
         </div>
@@ -326,6 +356,30 @@ emailSubmitBtn.onclick = () =>{
     emailInput.value = "";
   }
 }
+
+/*TOGGLE NAVBAR FUNCTIONALITY*/
+const toggleNavbarBtn = document.getElementById("toggleNavbarBtn")
+const closeNavbarBtn = document.getElementById("closeNavbarBtn")
+const navbarMenu = document.getElementById("navbarMenu")
+const mobileNavMenu = document.getElementById("mobileNavMenu")
+const overlay = document.getElementById("overlay")
+
+
+function openMenu(){
+  navbarMenu.classList.remove("translate-x-full")
+  overlay.classList.remove("hidden")
+  mobileNavMenu.classList.replace("hidden","flex")
+  closeNavbarBtn.classList.remove("hidden")
+}
+
+function closeMenu(){
+  navbarMenu.classList.add("translate-x-full")
+  overlay.classList.add("hidden")
+}
+
+toggleNavbarBtn.addEventListener("click" , openMenu)
+closeNavbarBtn.addEventListener("click" , closeMenu)
+overlay.addEventListener("click" , closeMenu)
 
 
 
